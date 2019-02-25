@@ -1,0 +1,16 @@
+body{
+    background-color:#0061ff;
+    color: aliceblue;
+}
+
+.vertical-bar {
+    
+    border-left: 16px dotted azure;
+    height: 300px;
+    padding-right: 10px;
+  }
+  
+  footer{
+      margin-top:30px;
+      margin-left: 40px;
+  }
