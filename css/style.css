@@ -28,3 +28,7 @@ body{
  .table{
      color:#ffffff;
  }
+
+ .breadcrumb-fixed{
+     position: fixed;
+ }
