@@ -2,7 +2,9 @@ body{
     background-color:#0061ff;
     color: aliceblue;
 }
-
+.col-cl{
+    color:black;
+}
 .vertical-bar {
     
     border-left: 16px dotted azure;
@@ -14,3 +16,15 @@ body{
       margin-top:30px;
       margin-left: 40px;
   }
+
+  #contri{
+     height: 200vh;
+  }
+
+  #read{
+     height:200vh;
+  }
+
+ .table{
+     color:#ffffff;
+ }
