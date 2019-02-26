@@ -1,3 +1,19 @@
+<?php
+   require 'con.php';
+   if(isset($_GET['val'])){
+       $pid = $_GET['val'];
+       $qer = mysqli_query($conn,"select * from posts where pid = '$pid'");
+       $fet = mysqli_fetch_assoc($qer);
+       $tit =   $fet['title'] ;
+       $pids = $fet['uid'] ;
+        $fet3 = mysqli_query($conn,"select * from users where uid = '$pids'");
+                          $fet4 = mysqli_fetch_assoc($fet3);
+                          $auth = $fet4['uname'];
+       
+       
+   }
+?>
+
 <html>
 
 <head>
@@ -13,10 +29,10 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="display-1"> "THIS will be the article topic"<p>
+                <h2 class="display-1"> " <?php echo $tit ; ?> "<p>
                 </h2>
-                <h4> By : Some Name </h4>
-                <h4> Date : Some date </h4>
+                <h4> By : <?php echo $auth ; ?> </h4>
+                <h4> Date : <?php echo $fet['datent'] ; ?> </h4>
             </div>
         </div>
     </div>
@@ -29,23 +45,7 @@
                     <br>
                     <p id="br">
 
-                        jhhhkkljkjk olk ksal;dkl;skdl;kasl;dkl;sakdl;s;lsss ds;dll;sld;sa ;'; ldlsldkl;' l';l';';
-                        k'k'kl'
-                        jhhhkkljkjk olk ksal;dkl;skdl;kasl;dkl;sakdl;s;lsss ds;dll;sld;sa ;'; ldlsldkl;' l';l';';
-                        k'k'kl'
-                        jhhhkkljkjk olk ksal;dkl;skdl;kasl;dkl;sakdl;s;lsss ds;dll;sld;sa ;'; ldlsldkl;' l';l';';
-                        k'k'kl'
-                        jhhhkkljkjk olk ksal;dkl;skdl;kasl;dkl;sakdl;s;lsss ds;dll;sld;sa ;'; ldlsldkl;' l';l';';
-                        k'k'kl'
-                        jhhhkkljkjk olk ksal;dkl;skdl;kasl;dkl;sakdl;s;lsss ds;dll;sld;sa ;'; ldlsldkl;' l';l';';
-                        k'k'kl'
-                        jhhhkkljkjk olk ksal;dkl;skdl;kasl;dkl;sakdl;s;lsss ds;dll;sld;sa ;'; ldlsldkl;' l';l';';
-                        k'k'kl'
-                        jhhhkkljkjk olk ksal;dkl;skdl;kasl;dkl;sakdl;s;lsss ds;dll;sld;sa ;'; ldlsldkl;' l';l';';
-                        k'k'kl'
-                        jhhhkkljkjk olk ksal;dkl;skdl;kasl;dkl;sakdl;s;lsss ds;dll;sld;sa ;'; ldlsldkl;' l';l';';
-                        k'k'kl'
-
+                       <?php echo  $fet['content'] ;?>
                     </p>
 
                 </blockquote>

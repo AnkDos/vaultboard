@@ -32,3 +32,8 @@ body{
  .breadcrumb-fixed{
      position: fixed;
  }
+
+ #br{
+    border-style: dashed;
+    border-width: 1px;
+ }
