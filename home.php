@@ -5,6 +5,10 @@
    
    require 'con.php';
    
+   if(!isset($_SESSION['id'])){
+       header("Location: index.php");
+   }
+   
    $sid = $_SESSION['id'];
    
     
@@ -27,7 +31,7 @@ $currentDir = getcwd();
 
               
            $title    =  $_POST['title'] ;
-           $content =  $_POST['content'] ;
+           $content =  trim($_POST['content']) ;
            
                $myfile =$fileName ; 
             $kw =   $_POST['kw'] ;
@@ -75,7 +79,16 @@ $currentDir = getcwd();
         header("Location: index.php");
     }
     
-    
+    if(isset($_GET['dw'])){
+        $loc = $_GET['dw'] ;
+        $file_url = "https://vaultit.000webhostapp.com/uploads/$loc";
+header('Content-Type: application/octet-stream');
+header("Content-Transfer-Encoding: Binary"); 
+header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\""); 
+readfile($file_url);
+        
+        
+    }
    
   ob_end_flush();
 ?>
@@ -194,7 +207,7 @@ $currentDir = getcwd();
                                $len = strlen($dw);
                                if($len > 1){
                                ?>
-                                 <td><a class="btn btn-light" name="btn" href = "https://vaultit.000webhostapp.com/uploads/<?php echo $dw?>" target="_blank">Download</a></td>
+                                 <td><a class="btn btn-light" name="btn" href="?dw=<?php echo $dw ;?>">Download</a></td>
                              <?php
                               }else{
                                   
