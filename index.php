@@ -1,5 +1,6 @@
 <?php
 ob_start();
+session_start();
 require 'con.php';
 if(isset($_POST['btn'])){
    $uname = $_POST['email'];
@@ -8,7 +9,8 @@ if(isset($_POST['btn'])){
    $fet = mysqli_fetch_assoc($qer);
    $pass2 = $fet['pass'];     
    if($pass == $pass2){
-      header("Location: home.html");
+       $_SESSION['id'] = $fet['uid'];
+      header("Location: home.php");
    }else{
        echo "<script> alert('There was an error , Please try again !'); </script>";
    }
@@ -17,12 +19,13 @@ if(isset($_POST['btn'])){
 if(isset($_POST['btn2'])){
     $uname = $_POST['uname2'];
     $pass = $_POST['pass2'];
-    $email = $_POST['mail'];;
-    $ins = mysqli_query($conn,"insert into users(uid,uname,pass,mail) values ('','$uname','$pass','$email')");
+    $email = $_POST['mail'];
+    $ins = mysqli_query($conn,"insert into users(uname,pass,mail) values ('$uname','$pass','$email')");
     if($ins){
         echo "<script> alert('Sucessfull , Login to continue'); </script>";
     }else{
-        echo "<script> alert('There was an error , Please try again !'); </script>";
+        echo mysqli_error($conn);
+        // echo "<script> alert('There was an error , Please try again !'); </script>";
     }
     
 }
